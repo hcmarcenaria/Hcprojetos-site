@@ -3,35 +3,75 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header style={{
-      backgroundColor: "#ffffff",
-      borderBottom: "1px solid #ddd",
-      padding: "15px 20px",
+      backgroundColor: "#0A3142",          // azul do seu logo
+      padding: "15px 25px",
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
       position: "sticky",
       top: 0,
-      zIndex: 100,
+      zIndex: 1000,
     }}>
-
-      <h2 style={{ margin: 0, fontSize: "20px" }}>
-        <Link href="/" style={{ textDecoration: "none", color: "#000" }}>
+      
+      {/* LOGO / NOME */}
+      <h2 style={{ margin: 0 }}>
+        <Link 
+          href="/" 
+          style={{ 
+            textDecoration: "none", 
+            color: "#FF780A",          // laranja do logo
+            fontSize: "24px",
+            fontWeight: "bold"
+          }}
+        >
           HC Projetos
         </Link>
       </h2>
 
-      <nav style={{ display: "flex", gap: "20px" }}>
+      {/* MENU */}
+      <nav style={{ display: "flex", gap: "22px" }}>
+        {[
+          ["Visualize Seu Móvel", "/visualize"],
+          ["Projeto Técnico", "/tecnico"],
+          ["Premium", "/premium"],
+          ["Como Funciona", "/como-funciona"],
+          ["Blog", "/blog"],
+          ["Portfólio", "/portfolio"],
+          ["Sobre", "/sobre"],
+          ["Contato", "/contato"],
+        ].map(([label, url]) => (
+          <Link
+            key={url}
+            href={url}
+            style={{
+              textDecoration: "none",
+              color: "#ffffff",
+              fontSize: "16px",
+              transition: "0.2s",
+            }}
+            onMouseEnter={(e) => e.target.style.color = "#FF780A"}
+            onMouseLeave={(e) => e.target.style.color = "#ffffff"}
+          >
+            {label}
+          </Link>
+        ))}
 
-        <Link href="/visualize" style={{ textDecoration: "none", color: "#333" }}>Visualize Seu Móvel</Link>
-        <Link href="/tecnico" style={{ textDecoration: "none", color: "#333" }}>Projeto Técnico</Link>
-	<Link href="/premium" style={{ textDecoration: "none", color: "#333" }}>Premium</Link>
-        <Link href="/como-funciona" style={{ textDecoration: "none", color: "#333" }}>Como Funciona</Link>
-        <Link href="/blog" style={{ textDecoration: "none", color: "#333" }}>Blog</Link>
-        <Link href="/orcamento" style={{ textDecoration: "none", color: "#333" }}>Orçamento</Link>
-	<Link href="/portfolio" style={{ textDecoration: "none", color: "#333" }}>Portfólio</Link>
-	<Link href="/sobre" style={{ textDecoration: "none", color: "#333" }}>Sobre</Link>
-	<Link href="/contato" style={{ textDecoration: "none", color: "#333" }}>Contato</Link>
-
+        {/* Botão destaque */}
+        <Link
+          href="/orcamento"
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#FF780A",
+            color: "#fff",
+            borderRadius: "6px",
+            textDecoration: "none",
+            fontSize: "16px",
+            fontWeight: "bold",
+            marginLeft: "10px",
+          }}
+        >
+          Orçamento
+        </Link>
       </nav>
 
     </header>
