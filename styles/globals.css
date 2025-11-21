@@ -58,4 +58,8 @@ a {
   .mobile {
     display: block !important;
   }
+
+body {
+  background: red !important;
+}
 }
