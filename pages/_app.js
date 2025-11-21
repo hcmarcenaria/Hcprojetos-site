@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import Script from 'next/script'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 export default function App({ Component, pageProps }) {
   return (
@@ -16,8 +17,11 @@ export default function App({ Component, pageProps }) {
       {/* MENU SUPERIOR */}
       <Header />
 
-      {/* CONTEÚDO DO SITE */}
+      {/* CONTEÚDO PRINCIPAL */}
       <Component {...pageProps} />
+
+      {/* RODAPÉ */}
+      <Footer />
     </>
   )
 }
