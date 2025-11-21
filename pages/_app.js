@@ -5,10 +5,12 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       {/* Código do Google AdSense */}
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8672859609478046"
-     crossorigin="anonymous">
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8678259064478046"
+        crossOrigin="anonymous"
         strategy="beforeInteractive"
-      </script>
+      />
 
       <Component {...pageProps} />
     </>
