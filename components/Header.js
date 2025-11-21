@@ -23,59 +23,59 @@ export default function Header() {
       top: 0,
       zIndex: 999
     }}>
-
+      
       {/* DESKTOP */}
       <div className="desktop" style={{
-        display: "flex",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
       }}>
-        <Link href="/" style={{ fontSize: "20px", fontWeight: "bold", color: "#FF780A", textDecoration: "none" }}>
-          HC Projetos
-        </Link>
+        <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+          <Link href="/" style={{ fontSize: "20px", color: "#FF780A", textDecoration: "none", fontWeight: "bold" }}>
+            HC Projetos
+          </Link>
 
-        <nav style={{ display: "flex", gap: "20px" }}>
-          {links.map((item, i) => (
-            <Link key={i} href={item.href} style={{ color: "#fff", textDecoration: "none", fontSize: "16px" }}>
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+          <nav style={{ display: "flex", gap: "20px" }}>
+            {links.map((item, i) => (
+              <Link key={i} href={item.href} style={{ color: "#fff", textDecoration: "none" }}>
+                {item.name}
+              </Link>
+            ))}
+          </nav>
 
-        <Link
-          href="/orcamento"
-          style={{
-            background: "#FF780A",
-            padding: "10px 18px",
-            borderRadius: "8px",
-            color: "#fff",
-            textDecoration: "none",
-            fontWeight: "bold"
-          }}
-        >
-          Orçamento
-        </Link>
+          <Link
+            href="/orcamento"
+            style={{
+              background: "#FF780A",
+              padding: "10px 16px",
+              borderRadius: "8px",
+              color: "white",
+              textDecoration: "none",
+              fontWeight: "bold"
+            }}
+          >
+            Orçamento
+          </Link>
+        </div>
       </div>
 
       {/* MOBILE */}
-      <div className="mobile" style={{ display: "none" }}>
+      <div className="mobile">
         <div style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center"
         }}>
-          <Link href="/" style={{ fontSize: "20px", fontWeight: "bold", color: "#FF780A", textDecoration: "none" }}>
+          <Link href="/" style={{ fontSize: "20px", color: "#FF780A", textDecoration: "none", fontWeight: "bold" }}>
             HC Projetos
           </Link>
 
           <button
             onClick={() => setOpen(!open)}
             style={{
+              fontSize: "28px",
               background: "none",
               border: "none",
-              color: "#fff",
-              fontSize: "28px",
-              cursor: "pointer"
+              color: "#fff"
             }}
           >
             ☰
@@ -83,56 +83,30 @@ export default function Header() {
         </div>
 
         {open && (
-          <nav
-            style={{
-              marginTop: "15px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "15px"
-            }}
-          >
+          <div style={{ marginTop: "10px", display: "flex", flexDirection: "column", gap: "15px" }}>
             {links.map((item, i) => (
-              <Link
-                key={i}
-                href={item.href}
-                style={{ color: "#fff", textDecoration: "none", fontSize: "18px" }}
-                onClick={() => setOpen(false)}
-              >
+              <Link key={i} href={item.href} onClick={() => setOpen(false)} style={{
+                color: "#fff",
+                fontSize: "18px",
+                textDecoration: "none"
+              }}>
                 {item.name}
               </Link>
             ))}
 
-            <Link
-              href="/orcamento"
-              onClick={() => setOpen(false)}
-              style={{
-                background: "#FF780A",
-                padding: "10px",
-                marginTop: "10px",
-                borderRadius: "8px",
-                textAlign: "center",
-                color: "#fff",
-                textDecoration: "none",
-                fontSize: "18px",
-                fontWeight: "bold"
-              }}
-            >
+            <Link href="/orcamento" style={{
+              background: "#FF780A",
+              padding: "10px",
+              borderRadius: "8px",
+              color: "#fff",
+              textDecoration: "none",
+              textAlign: "center"
+            }}>
               Orçamento
             </Link>
-          </nav>
+          </div>
         )}
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .desktop { display: none; }
-          .mobile { display: block; }
-        }
-        @media (min-width: 769px) {
-          .desktop { display: flex; }
-          .mobile { display: none; }
-        }
-      `}</style>
     </header>
   );
 }
