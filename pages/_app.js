@@ -7,11 +7,12 @@ export default function App({ Component, pageProps }) {
       {/* Código do Google AdSense */}
       <Script
         async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8678259064478046"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8672859609478046"
         crossOrigin="anonymous"
         strategy="beforeInteractive"
       />
 
+      {/* Seu site */}
       <Component {...pageProps} />
     </>
   )
