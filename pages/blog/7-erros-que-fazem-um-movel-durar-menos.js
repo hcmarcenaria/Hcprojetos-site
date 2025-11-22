@@ -36,7 +36,7 @@ export default function Artigo7Erros() {
 
         {/* Imagem do artigo */}
         <img
-          src="/images/artigos/movel-durabilidade.jpg"
+          src="/public/images/artigos/durabilidade-movel.png"
           alt="Erros que reduzem a durabilidade de móveis planejados"
           style={{
             width: "100%",
