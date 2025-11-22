@@ -1,28 +1,25 @@
 import Link from "next/link";
 
-// Lê automaticamente todos os arquivos dentro de /pages/blog (menos index.js)
+// Função para importar automaticamente todos os posts da pasta
 function importPosts() {
-  const context = require.context(".", true, /\.js$/);
-  const posts = [];
+  const context = require.context(".", false, /\.js$/);
 
-  context.keys().forEach((key) => {
-    if (key === "./index.js") return; // ignora o próprio index
+  const posts = context
+    .keys()
+    .filter((key) => key !== "./index.js") // remove o próprio index
+    .map((key) => {
+      const post = context(key);
+      const slug = key.replace("./", "").replace(".js", "");
 
-    // importa o arquivo do artigo
-    const post = context(key);
-
-    // Extrai o slug: "./7-erros.js" → "7-erros"
-    const slug = key.replace("./", "").replace(".js", "");
-
-    posts.push({
-      slug,
-      title: post.meta?.title || slug,
-      resumo: post.meta?.resumo || "Clique para ler o artigo.",
-      data: post.meta?.data || "2000-01-01",
+      return {
+        slug,
+        title: post.meta?.title || "Artigo sem título",
+        resumo: post.meta?.resumo || "Clique para ler o artigo.",
+        data: post.meta?.data || "2000-01-01",
+      };
     });
-  });
 
-  // Ordena os artigos mais novos no topo
+  // Ordenar do mais novo para o mais antigo
   posts.sort((a, b) => new Date(b.data) - new Date(a.data));
 
   return posts;
