@@ -1,42 +1,33 @@
 import Head from "next/head";
 
-export default function Artigo7Erros() {
-  // Gera data de publicação automática
-  const data = new Date();
-  const dataFormatada = data.toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
-  const hora = data.toLocaleTimeString("pt-BR", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+export const meta = {
+  title: "7 Erros que Fazem um Móvel Durar Menos — e Como Evitá-los",
+  resumo: "Os erros mais comuns que reduzem a vida útil dos móveis e como evitá-los de forma simples e prática.",
+  data: "2025-11-22"
+};
 
+export default function Artigo7Erros() {
   return (
     <>
       <Head>
-        <title>7 Erros que Fazem um Móvel Durar Menos — HC Projetos</title>
-        <meta
-          name="description"
-          content="Descubra os 7 principais erros que reduzem a vida útil dos móveis planejados e saiba como evitá-los. Guia completo por HC Projetos."
-        />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.resumo} />
       </Head>
 
       <main style={{ maxWidth: "900px", margin: "40px auto", padding: "20px" }}>
         
         <h1 style={{ fontSize: "32px", fontWeight: "bold", marginBottom: "10px" }}>
-          7 Erros que Fazem um Móvel Durar Menos — e Como Evitá-los
+          {meta.title}
         </h1>
 
         {/* Data */}
         <p style={{ color: "#555", marginBottom: "20px" }}>
-          <strong>Publicado em:</strong> {dataFormatada} às {hora}
+          <strong>Publicado em:</strong> 22 de novembro de 2025
         </p>
 
-        {/* Imagem do artigo */}
+        {/* Imagem */}
         <img
-          src="/public/images/artigos/durabilidade-movel.png"
+          src="/images/artigos/durabilidade-moveis.png"
           alt="Erros que reduzem a durabilidade de móveis planejados"
           style={{
             width: "100%",
@@ -46,15 +37,15 @@ export default function Artigo7Erros() {
           }}
         />
 
-        {/* Texto do artigo */}
         <article style={{ lineHeight: "1.8", fontSize: "18px", color: "#333" }}>
           <p>
-            Quando um móvel começa a empenar, inchar ou perder resistência, muita gente culpa a madeira.
+            Quando um móvel começa a empenar, inchar ou perder resistência, muita gente culpa a madeira. 
             Mas, na prática, os problemas quase sempre vêm de erros de projeto, montagem ou especificação.
           </p>
 
           <p>
-            A seguir, listamos os 7 erros mais comuns que encurtam a vida útil dos móveis — junto com soluções claras para evitar cada um.
+            A seguir, listamos os 7 erros mais comuns que encurtam a vida útil dos móveis — 
+            junto com soluções claras para evitar cada um.
           </p>
 
           <hr style={{ margin: "25px 0" }} />
