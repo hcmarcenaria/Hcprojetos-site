@@ -14,9 +14,7 @@ export default function Footer() {
         HC Projetos
       </h3>
 
-      <p style={{ margin: "10px 0", fontSize: "16px" }}>
-        CNPJ: 41.251.913/0001-68 • Jacareí – SP
-      </p>
+     
 
       <p style={{ margin: "5px 0", fontSize: "16px" }}>
         WhatsApp: (12) 99183-1380 •  
