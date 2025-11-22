@@ -2,25 +2,31 @@ export default function Footer() {
   return (
     <footer
       style={{
-        backgroundColor: "#0A3142",   // azul do logo
+        backgroundColor: "#0A3142",
         padding: "30px 20px",
         marginTop: "60px",
         color: "#ffffff",
         textAlign: "center",
-        borderTop: "3px solid #FF780A", // detalhe moderno em laranja
+        borderTop: "3px solid #FF780A",
       }}
     >
       <h3 style={{ margin: 0, fontSize: "22px", color: "#FF780A" }}>
         HC Projetos
       </h3>
 
-     
+      <p style={{ margin: "10px 0", fontSize: "16px" }}>
+        CNPJ: 41.251.913/0001-68 • Jacareí – SP
+      </p>
 
       <p style={{ margin: "5px 0", fontSize: "16px" }}>
-        WhatsApp: (12) 99183-1380 •  
+        WhatsApp: (12) 99183-1380 • 
         <a
           href="mailto:hcmarcenariaemovelaria@hotmail.com"
-          style={{ color: "#FF780A", textDecoration: "none", marginLeft: "5px" }}
+          style={{
+            color: "#FF780A",
+            textDecoration: "none",
+            marginLeft: "5px",
+          }}
         >
           hcmarcenariaemovelaria@hotmail.com
         </a>
