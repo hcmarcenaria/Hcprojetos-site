@@ -27,15 +27,17 @@ export default function Artigo7Erros() {
 
         {/* Imagem */}
         <img
-          src="/images/artigos/durabilidade-moveis.png"
+         src="/images/artigos/durabilidade-moveis.png"
           alt="Erros que reduzem a durabilidade de móveis planejados"
           style={{
-            width: "100%",
-            borderRadius: "10px",
-            margin: "20px 0",
-            objectFit: "cover",
-          }}
-        />
+          width: "100%",
+          maxWidth: "600px",
+          borderRadius: "10px",
+          margin: "20px auto",
+          display: "block",
+          objectFit: "cover",
+        }}
+/>
 
         <article style={{ lineHeight: "1.8", fontSize: "18px", color: "#333" }}>
           <p>
