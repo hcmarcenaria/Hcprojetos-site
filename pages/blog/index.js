@@ -2,32 +2,42 @@ import fs from "fs";
 import path from "path";
 import Link from "next/link";
 
-export function getStaticProps() {
+// Carrega todos os posts da pasta /pages/blog
+export async function getStaticProps() {
   const postsDir = path.join(process.cwd(), "pages", "blog");
-  const files = fs.readdirSync(postsDir);
 
-  const posts = files
-    .filter((file) => file !== "index.js")
-    .map((file) => {
-      const filePath = path.join(postsDir, file);
-      const content = fs.readFileSync(filePath, "utf-8");
+  const files = fs
+    .readdirSync(postsDir)
+    .filter((file) => file.endsWith(".js") && file !== "index.js");
 
-      // Extrai o objeto meta usando regex
-      const metaMatch = content.match(/export const meta = ({[\s\S]*?});/);
+  const posts = files.map((filename) => {
+    const slug = filename.replace(".js", "");
+    const filePath = path.join(postsDir, filename);
+    const fileContent = fs.readFileSync(filePath, "utf8");
 
-      let meta = {};
-      if (metaMatch) {
+    // extrair meta
+    const metaMatch = fileContent.match(/export const meta = ({[\s\S]*?});/);
+
+    let meta = {
+      title: "Sem título",
+      resumo: "Sem resumo",
+      data: "2000-01-01",
+    };
+
+    if (metaMatch) {
+      try {
         meta = eval("(" + metaMatch[1] + ")");
-      }
+      } catch (e) {}
+    }
 
-      return {
-        slug: file.replace(".js", ""),
-        title: meta.title || "Artigo sem título",
-        resumo: meta.resumo || "",
-        data: meta.data || "2000-01-01"
-      };
-    })
-    .sort((a, b) => new Date(b.data) - new Date(a.data));
+    return {
+      slug,
+      ...meta,
+    };
+  });
+
+  // ordenar do mais novo para o mais antigo
+  posts.sort((a, b) => new Date(b.data) - new Date(a.data));
 
   return { props: { posts } };
 }
@@ -45,10 +55,26 @@ export default function Blog({ posts }) {
 
       <div style={{ display: "flex", flexDirection: "column", gap: "25px" }}>
         {posts.map((post) => (
-          <div key={post.slug} style={{ padding: "20px", border: "1px solid #ddd", borderRadius: "10px" }}>
+          <div
+            key={post.slug}
+            style={{
+              padding: "20px",
+              border: "1px solid #ddd",
+              borderRadius: "10px",
+            }}
+          >
             <h2 style={{ margin: 0, fontSize: "24px" }}>{post.title}</h2>
             <p style={{ marginTop: "10px", fontSize: "16px" }}>{post.resumo}</p>
-            <Link href={`/blog/${post.slug}`} style={{ marginTop: "10px", display: "inline-block", fontSize: "16px", color: "#FF780A" }}>
+
+            <Link
+              href={`/blog/${post.slug}`}
+              style={{
+                marginTop: "10px",
+                display: "inline-block",
+                fontSize: "16px",
+                color: "#FF780A",
+              }}
+            >
               Ler artigo →
             </Link>
           </div>
